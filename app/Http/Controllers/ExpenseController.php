@@ -5,12 +5,28 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Expense;
 use Auth;
+use App\Models\User;
+use Http;
 
 class ExpenseController extends Controller
 {
-     public function __construct()
+    //  public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
+
+    public function test()
     {
-        $this->middleware('auth');
+        $all_users = User::all();
+
+        return $all_users;
+    }
+
+    public function getTest()
+    {
+        $all_users = Http::get("http://localhost/Expense_Management_System/public/api/test");
+
+        return $all_users;
     }
     
     public function index()
